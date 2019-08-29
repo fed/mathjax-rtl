@@ -1,0 +1,18 @@
+{
+  "name": "mathjax-rtl",
+  "version": "0.0.0",
+  "description": "RTL math rendering with MathJax",
+  "main": "index.html",
+  "repository": "git@github.com:fknussel/mathjax-rtl.git",
+  "author": "Federico Knüssel <fknussel@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "serve"
+  },
+  "dependencies": {
+    "mathjax": "^2.7.5"
+  },
+  "devDependencies": {
+    "serve": "^11.1.0"
+  }
+}

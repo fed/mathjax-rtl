@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RTL math rendering with MathJax</title>
+    <link href="style.css" rel="stylesheet" />
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ['mml2jax.js'],
+            jax: ['input/MathML', 'output/HTML-CSS'],
+            'HTML-CSS': {
+                fonts: ['TeX']
+            },
+            MathML: {
+                extensions: ['mml3.js']
+            }
+        });
+        </script>
+    <script src="node_modules/mathjax/unpacked/MathJax.js"></script>
+</head>
+<body>
+
+    <h1 class="title">RTL math rendering with MathJax</h1>
+
+    <div class="box">
+        <p>The whole radicand renders correctly in LTR, but somehow only the first addend renders in RTL.</p>
+
+        <p><math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi></msqrt><mo>=</mo><mn>0</mn></math></p>
+
+        <p dir="rtl"><math dir="rtl" xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi></msqrt><mo>=</mo><mn>0</mn></math></p>
+
+        <p>However this other formula renders just fine in RTL, looks like it's just an issue with the <code>msqrt</code> element only.</p>
+
+        <p dir="rtl"><math dir="rtl" xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi></mrow><mi>n</mi></mroot><mo>=</mo><mn>0</mn></math></p>
+    </div>
+
+    <div class="box">
+        <p>The square root operator renders just fine in LTR, but it looks off in RTL.</p>
+
+        <p><math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>x</mi></msqrt></math></p>
+
+        <p dir="rtl"><math dir="rtl" xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>x</mi></msqrt></math></p>
+
+        <p>This is how Firefox natively renders this same MathML:</p>
+
+        <p dir="rtl"><img src="images/sqrt.jpg" alt="Square root symbol rendered by Firefox" style="width:70px" /></p>
+    </div>
+
+    <div class="box">
+        <p>The summation symbol is not flipped in RTL:</p>
+
+        <p><math xmlns="http://www.w3.org/1998/Math/MathML"><munderover><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mn>100</mn></munderover><msup><mi>i</mi><mn>2</mn></msup></math></p>
+
+        <p dir="rtl"><math dir="rtl" xmlns="http://www.w3.org/1998/Math/MathML"><munderover><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mn>100</mn></munderover><msup><mi>i</mi><mn>2</mn></msup></math></p>
+
+        <p>This is how Firefox natively renders this same MathML:</p>
+
+        <p dir="rtl"><img src="images/summation.jpg" alt="Summation symbol rendered by Firefox" style="width:120px" /></p>
+    </div>
+
+    <div class="box">
+        <p>The integral symbol is not flipped in RTL:</p>
+
+        <p><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mo>&#x222B;</mo><mi>a</mi><mi>b</mi></msubsup><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>d</mo><mi>x</mi></math></p>
+
+        <p dir="rtl"><math dir="rtl" xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mo>&#x222B;</mo><mi>a</mi><mi>b</mi></msubsup><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>d</mo><mi>x</mi></math></p>
+
+        <p>This is how Firefox natively renders this same MathML:</p>
+
+        <p dir="rtl"><img src="images/integral.jpg" alt="Summation symbol rendered by Firefox" style="width:180px" /></p>
+
+        <p>Same thing happens with double, contour and surface integrals:</p>
+
+        <p><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#x222C;</mo><mo>+</mo><mo>&#x222E;</mo><mo>+</mo><mo>&#x222F;</mo></math></p>
+
+        <p dir="rtl"><math dir="rtl" xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#x222C;</mo><mo>+</mo><mo>&#x222E;</mo><mo>+</mo><mo>&#x222F;</mo></math></p>
+
+        <p>This is how Firefox natively renders the MathML above:</p>
+
+        <p dir="rtl"><img src="images/other-integrals.jpg" alt="Integrals rendered by Firefox" style="width:180px" /></p>
+    </div>
+
+</div>
+</body>
+</html>
