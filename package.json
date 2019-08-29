@@ -9,9 +9,6 @@
   "scripts": {
     "start": "serve"
   },
-  "dependencies": {
-    "mathjax": "^2.7.5"
-  },
   "devDependencies": {
     "serve": "^11.1.0"
   }
